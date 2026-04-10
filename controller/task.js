@@ -46,6 +46,7 @@ exports.deletedata = async (req, res) => {
     try {
         const deleteid = req.params.deleteid
         const deletedata = await Task.findByIdAndDelete(deleteid)
+      
         if (!deletedata) {
             res.status(404).json({
                 status: "fail",

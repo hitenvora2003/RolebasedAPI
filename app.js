@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var TaskRouter = require('./routes/task');
 var usersRouter = require('./routes/users');
+var mainrouteer = require('./routes/mainrouters');
 const mongoose = require('mongoose');
 const { error } = require('console');
 mongoose.connect('mongodb://localhost:27017/Task')
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/task', TaskRouter);
 app.use('/user', usersRouter);
+app.use('/api', mainrouteer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

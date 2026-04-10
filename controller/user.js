@@ -7,7 +7,8 @@ exports.pageview = async (req, res) => {
         const role = req.user.role
 
         if (role !== "subAdmin" && role !== "superAdmin") {
-            return res.status(403).json({ message: "Access denied" });
+            return res.status(403).json({ 
+                   message: "Access denied" });
         }
         const alldata = await user.find()
 
@@ -51,6 +52,7 @@ exports.deletedata = async (req, res) => {
     try {
         const deleteid = req.params.deleteid
         const deletedata = await user.findByIdAndDelete(deleteid)
+        console.log(deletedata)
 
 
         res.status(200).json({
@@ -91,7 +93,7 @@ exports.login = async (req, res) => {
 
         res.status(200).json({
             status: "success",
-            message: "data login successfull",
+            message: "User login successfull",
             role: emailverify.role,
             data: emailverify, token
         })
